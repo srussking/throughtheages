@@ -1,7 +1,7 @@
 /**
  *------
- * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
- * ThroughTheAgesMobileReadability implementation : © <Your name here> <Your email address here>
+ * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
+ * throughtheagesmobilereadability implementation : © Gregory Isabelli <gisabelli@boardgamearena.com> & Romain Fromi <romain.fromi@gmail.com>
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
@@ -9,7 +9,7 @@
  *
  * throughtheagesmobilereadability.css
  *
- * ThroughTheAgesMobileReadability stylesheet
+ * throughtheagesmobilereadability stylesheet
  *
  */
 
@@ -27,7 +27,7 @@
 
     2°) create your CSS-sprites:
         All images of your games should be gathered into a small number of image files. Then, using
-        background-image and background-position CSS properties, you create HTML blocks that can 
+        background-image and background-position CSS properties, you create HTML blocks that can
         display these images correctly (see example below).
     
     3°) ... anything else:
@@ -42,31 +42,795 @@
            Consequently, don't hesitate to put as many comments as necessary.
 */
 
-
-/* Note: you must not use any @import directive */
-
+@import url(../../../css/csslayer.css); /* Note: you must not use any @import directive other than this one */
 
 /********* You can start writing your CSS below this line: **********/
 
 
-/*
-    Example of CSS sprites (a black token and a white token, 20x20px each, embedded in the same "tokens.png" 40x20px image):
+/*** player panel ***/
 
-    .white_token {
-        background-image: url('img/tokens.png');
-        background-position: 0px 0px;
-    }
-    .black_token {
-        background-image: url('img/tokens.png');
-        background-position: -20px 0px;
-    }
-    .token {
+.tta_icon {
+    width: 30px;
+    height: 30px;
+    background-image: url('img/icons.png');
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+}
+.science {  background-position: -0px -0px; }
+.strength {  background-position: -30px -0px; }
+.culture {  background-position: -60px -0px; }
+.colonization {  background-position: -90px -0px; }
+.happy {  background-position: -150px -0px; }
+.food { background-position: -150px -30px; }
+.resource { background-position: -120px -30px; }
+.unhappy {  background-position: -150px -60px; }
+
+.tta_icon > span {
+    position: absolute;
+    right: -6px;
+    font-size: 18px;
+}
+
+.tta_icon .production {
+    position: absolute;
+    bottom: -2px;
+    right: -12px;
+    font-size: 14px;
+    height: 18px;
+}
+
+.tta_smallicon{
         width: 20px;
         height: 20px;
-        background-repeat: none;
-    }
-*/
+        background-image: url('img/icons.png');
+        display: inline-block;
+}
+.smallfood {    background-position: -100px -30px; }
+.smallscience {  background-position: -100px -50px; }
+.smallress {  background-position: -80px -50px; }
+
+.boardblock .nolinebreak {
+    display: inline-block;
+    width: 47px;
+    text-align: center;
+}
+.boardblock {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.unhappywarning, .hunger-warning, .corruption-warning {
+    color: red;
+    font-weight: bold;
+}
+
+.workerpool_wrapper {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #F0C671;
+    border: 2px solid #E69732;
+    border-radius: 5px;
+}
+
+.minihand .stockitem {
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+/*** card row ***/
+
+#card_row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#card_row > * {
+    flex-shrink: 0;
+    margin-top: 5px;
+    height: 150px;
+}
+
+
+.card_row_part {
+    background-image: url('img/card_row.jpg');
+    position: relative;
+}
+#card_row_1 {
+    width: 421px;
+    background-position: -0px -0px;
+}
+#card_row_2 {
+    width: 335px;
+    background-position: -421px -0px;
+}
+#card_row_3 {
+    width: 343px;
+    background-position: -756px -0px;
+}
+.card_row_place {
+    width: 80px;
+    height: 117px;
+    position: absolute;
+    top: 19px;
+}
+
+.tta_large #card_row > * {
+    height: 187px;
+}
+
+.tta_large #card_row_1,
+.tta_large #card_row_2,
+.tta_large #card_row_3
+ {
+    background-size: 1374px 187px;
+}
+.tta_large #card_row_1 {
+    width: 526px;
+}
+.tta_large #card_row_2 {
+    width: 419px;
+    background-position: -526px -0px;
+}
+.tta_large #card_row_3 {
+    width: 429px;
+    background-position: -945px -0px;
+}
+
+
+.tta_large .card_row_place {
+    width: 100px;
+    height: 146px;
+    top: 28px;
+}
+
+
+#card_row_place_1 { left: 9px; }
+#card_row_place_2 { left: 91px; }
+#card_row_place_3 { left: 173px; }
+#card_row_place_4 { left: 255px; }
+#card_row_place_5 { left: 337px; }
+
+#card_row_place_6 { left: 5px; }
+#card_row_place_7 { left: 86px; }
+#card_row_place_8 { left: 168px; }
+#card_row_place_9 { left: 250px; }
+
+#card_row_place_10 { left: 5px; }
+#card_row_place_11 { left: 86px; }
+#card_row_place_12 { left: 169px; }
+#card_row_place_13 { left: 251px; }
+
+.tta_large #card_row_place_1 { left: 11px; }
+.tta_large #card_row_place_2 { left: 114px; }
+.tta_large #card_row_place_3 { left: 216px; }
+.tta_large #card_row_place_4 { left: 319px; }
+.tta_large #card_row_place_5 { left: 422px; }
+
+.tta_large #card_row_place_6 { left: 5px; }
+.tta_large #card_row_place_7 { left: 108px; }
+.tta_large #card_row_place_8 { left: 212px; }
+.tta_large #card_row_place_9 { left: 316px; }
+
+.tta_large #card_row_place_10 { left: 6px; }
+.tta_large #card_row_place_11 { left: 108px; }
+.tta_large #card_row_place_12 { left: 211px; }
+.tta_large #card_row_place_13 { left: 315px; }
+
+
+.card_row_cross {
+    position: absolute;
+    font-size: 22px;
+    z-index: 10;
+    color: red;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+.card_row_cross_4 { left: 41px; }
+.card_row_cross_3 { left: 122px; }
+.card_row_cross_2 { left: 204px; }
+
+.tta_large .card_row_cross {
+    top: 5px;
+}
+.tta_large .card_row_cross_4 { left: 54px; }
+.tta_large .card_row_cross_3 { left: 157px; }
+.tta_large .card_row_cross_2 { left: 258px; }
+
+
+.card_row_cost, .card_row_cost:before, .card_row_cost:after {
+    background-image: url(img/icons.png);
+    height: 15px;
+    background-position-y: -55px;
+    position: absolute;
+    z-index: 10;
+}
+.card_row_cost {
+    width: 0;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-position-x: -15px;
+}
+.card_row_cost.hidden {
+    display: none;
+}
+.card_row_cost:before {
+    content: '';
+    width: 7px;
+    left: -7px;
+}
+.card_row_cost:after {
+    content: '';
+    width: 8px;
+    right: -8px;
+    background-position-x: -7px;
+}
+.card_row_cost[data-value="0"]:before, .card_row_cost[data-value="0"]:after, .card_row_cost[data-value="X"]:after {
+    background: none;
+}
+.card_row_cost[data-value="X"]:before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    left: -9px;
+    background-position-x: -120px;
+    background-position-y: -60px;
+}
+.card_row_cost[data-value="0"]:before {
+    content: '✔';
+    color: green;
+    width: 15px;
+    top: -4px;
+    font-size: 18px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.card_row_cost[data-value="2"] {
+    width: 8px;
+}
+.card_row_cost[data-value="3"] {
+    width: 16px;
+}
+.card_row_cost[data-value="4"] {
+    width: 24px;
+}
+.card_row_cost[data-value="5"] {
+    width: 32px;
+}
+.card_row_cost[data-value="6"] {
+    width: 40px;
+}
+.card_row_cost[data-value="7"] {
+    width: 48px;
+}
+.card_row_cost[data-value="8"] {
+    width: 56px;
+}
+.card_row_cost[data-value="9"] {
+    width: 64px;
+}
+
+.card {
+    position: absolute;
+    width: 80px;
+    height: 117px;
+    background-image: url('img/cards.jpg');
+    cursor: pointer;
+}
+
+.tta_large .card {
+    width: 100px;
+    height: 146px;
+    background-image: url('img/cards_big.jpg');
+    background-size: 1000px 3650px;
+}
+
+.card, #player_hand .stockitem, .player_stacks .stockitem, .player_tableau .stockitem, #common_tactics .stockitem, #final_scoring_upper .stockitem, .civilhand .stockitem {
+    border: 2px solid black;
+    border-radius: 5px;
+    -moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
+    -o-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=15);
+}
+
+.card_place {
+    position: absolute;
+    width: 80px;
+    height: 117px;
+    cursor: pointer;
+}
+
+.tta_large .card_place {
+    width: 100px;
+    height: 146px;
+}
+
+.under_card {
+    z-index: -1;
+    top: 18px !important;
+    opacity: 1 !important;
+}
+
+.tta_large .under_card {
+    top: 23px !important;
+}
+
+/** Number of cards in civil deck, military deck and event decks **/
+#hand-row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#myhand {
+    flex-grow: 1;
+}
+
+#age_events_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    margin-left: 5px;
+    height: 173px;
+    width: 45px;
+    padding: 0 10px;
+}
+
+#age_events_info .card-back {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    padding-left: 25px;
+    color: black;
+    font-weight: bold;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+#age_events_info .card-back:before {
+    content: '';
+    background-image: url('img/minicards.png');
+    border: 1px solid black;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 20px;
+    height: 30px;
+    z-index: -1;
+}
+
+#remaining_civil_cards.card-back:before, #remaining_military_cards.card-back:before {
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+#future_events.card-back:before {
+    box-shadow: 0 0 10px darkgreen;
+}
+
+#current_events.card-back:before {
+    box-shadow: 0 0 10px chartreuse;
+}
+
+#age_events_info .card-back.military[data-value="A"]:before {
+    background-position-x: -20px
+}
+#age_events_info .card-back.civil[data-value="I"]:before {
+    background-position-x: -40px
+}
+#age_events_info .card-back.military[data-value="I"]:before {
+    background-position-x: -60px
+}
+#age_events_info .card-back.civil[data-value="II"]:before {
+    background-position-x: -80px
+}
+#age_events_info .card-back.military[data-value="II"]:before {
+    background-position-x: -100px
+}
+#age_events_info .card-back.civil[data-value="III"]:before, #age_events_info .card-back.civil[data-value="IV"]:before {
+    background-position-x: -120px
+}
+#age_events_info .card-back.military[data-value="III"]:before, #age_events_info .card-back.military[data-value="IV"]:before {
+    background-position-x: -140px
+}
+
+/** Stacks **/
+
+.player_cards_up{
+}
+
+.player_stacks {
+    width: 5px;
+    height: 117px;
+    margin-bottom: 8px;
+    float: left;
+}
+.player_tableau_wrap {
+    margin-left: 0;
+}
+.go_to_new_line {
+    clear: both;;
+}
+
+.player_tableau {
+    z-index: 1;
+}
+
+.stack {
+    float: left;
+    height: 100%;
+    width: 80px;
+    margin-right: 5px;
+    position: relative;
+    display: none;
+}
+.tta_large .stack {
+    width: 100px;
+}
+
+.stack .card_place {
+    position: absolute;
+    left: 0;
+    display: none;
+}
+.card_place_A {   bottom: 0; }
+.card_place_I {   bottom: 45px; }
+.card_place_II {  bottom: 90px; }
+.card_place_III { bottom: 135px; }
+    
+.tta_large .card_place_A {  bottom: 0; }
+.tta_large .card_place_I {  bottom: 56px; }
+.tta_large .card_place_II { bottom: 112px; }
+.tta_large .card_place_III {bottom: 168px; }
+
+/** Card in tableau **/
+
+.yellowzone {
+    position: absolute;
+    top: 75px;
+    left: 20px;
+    width: 60px;
+    height: 20px;
+}
+.tta_large .yellowzone {
+    width: 80px;
+    top: 95px;
+}
+
+.bluezone {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 20px;
+}
+.tta_large .bluezone {
+    width: 100px;
+}
+.token {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url('img/icons.png');
+}
+.token_yellow {
+    background-position: -60px -30px;
+}
+.token_blue {
+    background-position: -80px -30px;
+}
+
+.mtoken {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url('img/icons.png');
+}
+.mtoken_yellow {
+    background-position: -0px -70px;
+}
+.mtoken_blue {
+    background-position: -20px -70px;
+}
+
+.playerboard {
+    position: relative;
+}
+
+.card_place_govt {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.card_place_leader {
+    position: absolute;
+    top: 0px;
+    left: 85px;
+}
+.tta_large .card_place_leader {
+    left: 105px;
+}
+
+
+/*** tooltip ****/
+
+.cardtooltip {
+    text-align: left;
+    max-width: 300px;
+}
+.cardartwrap {
+}
+.cardart {
+    display: inline-block;
+    background-image: url('img/cards_big.jpg');
+    width: 197px;
+    height: 287px;
+    margin: 10px;
+    border: 4px solid black;
+    border-radius: 10px;
+}
+
+/*** Player board ***/
+
+.playerboard_ress {
+    margin-top: 5px;
+    margin-left: 170px;
+    background-image: url('img/blue_bank.png');
+    width: 405px;
+    height: 64px;
+    background-size: cover;
+    position: relative;
+}
+.tta_large .playerboard_ress {
+    margin-left: 220px;
+}
+
+.playerboard_food {
+    margin-top: 5px;
+    margin-left: 170px;
+    background-image: url('img/yellow_bank.png');
+    width: 665px;
+    height: 67px;
+    background-size: cover;
+    position: relative;
+}
+.tta_large .playerboard_food {
+    margin-left: 220px;
+}
+
+.tokenplace {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+.boardtoken {   position: absolute; }
+.tokenplace_ress_1 {    left: 10px;    top: 22px;    }
+.tokenplace_ress_2 {    left: 38px;    top: 36px;    }
+.tokenplace_ress_3 {    left: 38px;    top: 8px;    }
+.tokenplace_ress_4 {    left: 66px;    top: 36px;    }
+.tokenplace_ress_5 {    left: 66px;    top: 8px;    }
+
+.tokenplace_ress_6 {    left: 109px;    top: 22px;    }
+.tokenplace_ress_7 {    left: 137px;    top: 36px;    }
+.tokenplace_ress_8 {    left: 137px;    top: 8px;    }
+.tokenplace_ress_9 {    left: 164px;    top: 36px;    }
+.tokenplace_ress_10{    left: 164px;    top: 8px;    }
+
+.tokenplace_ress_11{    left: 208px;    top: 22px;    }
+.tokenplace_ress_12{    left: 236px;    top: 36px;    }
+.tokenplace_ress_13{    left: 236px;    top: 8px;    }
+.tokenplace_ress_14{    left: 263px;    top: 36px;    }
+.tokenplace_ress_15{    left: 263px;    top: 8px;    }
+.tokenplace_ress_16{    left: 290px;    top: 36px;    }
+
+.tokenplace_ress_17{    left: 290px;    top: 8px;    }
+.tokenplace_ress_18{    left: 314px;    top: 36px;    }
+.tokenplace_ress_19{    left: 314px;    top: 8px;    }
+.tokenplace_ress_20{    left: 337px;    top: 36px;    }
+.tokenplace_ress_21{    left: 337px;    top: 8px;    }
+.tokenplace_ress_22{    left: 360px;    top: 36px;    }
+.tokenplace_ress_23{    left: 360px;    top: 8px;    }
+.tokenplace_ress_24{    left: 383px;    top: 36px;    }
+.tokenplace_ress_25{    left: 383px;    top: 8px;    }
+.tokenplace_ress_26{    left: 406px;    top: 36px;    }
+.tokenplace_ress_27{    left: 406px;    top: 8px;    }
+.tokenplace_ress_28{    left: 429px;    top: 36px;    }
+.tokenplace_ress_29{    left: 429px;    top: 8px;    }
+.tokenplace_ress_30{    left: 452px;    top: 36px;    }
+.tokenplace_ress_31{    left: 452px;    top: 8px;    }
+.tokenplace_ress_32{    left: 475px;    top: 36px;    }
+.tokenplace_ress_33{    left: 475px;    top: 8px;    }
+.tokenplace_ress_34{    left: 498px;    top: 36px;    }
+.tokenplace_ress_35{    left: 498px;    top: 8px;    }
+.tokenplace_ress_36{    left: 521px;    top: 36px;    }
+.tokenplace_ress_37{    left: 521px;    top: 8px;    }
+
+
+.tokenplace_food_1 {    left: 7px;    top: 29px;    }
+.tokenplace_food_2 {    left: 30px;    top: 29px;    }
+.tokenplace_food_3 {    left: 57px;    top: 29px;    }
+.tokenplace_food_4 {    left: 80px;    top: 29px;    }
+
+.tokenplace_food_5 {    left: 116px;    top: 29px;    }
+.tokenplace_food_6 {    left: 139px;    top: 29px;    }
+.tokenplace_food_7 {    left: 166px;    top: 29px;    }
+.tokenplace_food_8 {    left: 189px;    top: 29px;    }
+
+.tokenplace_food_9 {    left: 226px;    top: 29px;    }
+.tokenplace_food_10{    left: 249px;    top: 29px;    }
+.tokenplace_food_11{    left: 276px;    top: 29px;    }
+.tokenplace_food_12{    left: 298px;    top: 29px;    }
+
+.tokenplace_food_13{    left: 335px;    top: 29px;    }
+.tokenplace_food_14{    left: 358px;    top: 29px;    }
+.tokenplace_food_15{    left: 380px;    top: 29px;    }
+.tokenplace_food_16{    left: 403px;    top: 29px;    }
+
+.tokenplace_food_17{    left: 439px;    top: 29px;    }
+.tokenplace_food_18{    left: 462px;    top: 29px;    }
+
+.tokenplace_food_19{    left: 489px;    top: 22px;    }
+.tokenplace_food_20{    left: 500px;    top: 38px;    }
+.tokenplace_food_21{    left: 511px;    top: 22px;    }
+.tokenplace_food_22{    left: 522px;    top: 38px;    }
+.tokenplace_food_23{    left: 533px;    top: 22px;    }
+.tokenplace_food_24{    left: 544px;    top: 38px;    }
+.tokenplace_food_25{    left: 555px;    top: 22px;    }
+.tokenplace_food_26{    left: 566px;    top: 38px;    }
+.tokenplace_food_27{    left: 577px;    top: 22px;    }
+.tokenplace_food_28{    left: 588px;    top: 38px;    }
+.tokenplace_food_29{    left: 599px;    top: 22px;    }
+.tokenplace_food_30{    left: 610px;    top: 38px;    }
+.tokenplace_food_31{    left: 621px;    top: 22px;    }
+.tokenplace_food_32{    left: 632px;    top: 38px;    }
+.tokenplace_food_33{    left: 643px;    top: 22px;    }
+.tokenplace_food_34{    left: 654px;    top: 38px;    }
+.tokenplace_food_35{    left: 665px;    top: 22px;    }
+.tokenplace_food_36{    left: 676px;    top: 38px;    }
+
+
+.happyplace {
+    width: 28px;
+    height: 27px;
+    position: absolute;
+    top: -1px;
+}
+.happyplace_current {
+    background-image: url('img/icons.png');
+    background-position: -127px -0px;
+    background-size: 155px;
+}
+.happyplace_0 { left: 498px; }
+.happyplace_1 { left: 443px; }
+.happyplace_2 { left: 363px; }
+.happyplace_3 { left: 281px; }
+.happyplace_4 { left: 231px; }
+.happyplace_5 { left: 172px; }
+.happyplace_6 { left: 122px; }
+.happyplace_7 { left: 63px;  }
+.happyplace_8 { left: 13px;  }
+
+#eventDlg {
+    text-align: center;
+}
+
+.cardcontentmask {
+    background-color: white;
+    width: 100%;
+    height: 117px;
+    opacity: 0.5;
+    display: none;
+}
+.tta_large .cardcontentmask {
+    height: 146px;
+}
+
+.player_cards_up .stockitem.ravaged.ageA {
+    background-position-x: 0 !important;
+    background-position-y: 0 !important;
+}
+
+.player_cards_up .stockitem.ravaged.ageI {
+    background-position-x: -500% !important;
+    background-position-y: -300% !important;
+}
+
+/*** Territory ***/
+
+#bidTerritory {
+    display: none;
+}
+#territory {
+    float: left;
+}
+#territory_playersbid {
+    padding-top: 20px;
+    margin-left: 200px;
+}
+
+/*** aggression ***/
+
+#aggressionInProgress {
+    display: none;
+}
+#aggression {
+    float: left;
+}
 
 
 
+.firstplayernotice {
+    font-size: 50%;
+    color: black;
+    margin-left: 10px;
+}
 
+.warwarning {
+    color: white;
+    background-color: black;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.pactmarker {
+    position: absolute;
+    top: 46px;
+    width: 14px;
+    height: 18px;
+    border: white 2px solid;
+    display: none;
+}
+.tta_large .pactmarker {
+    top: 60px;
+}
+.pact_a {
+    left: -2px;
+}
+.pact_b {
+    right: -2px;
+}
+.pactcancel {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 80px;
+    text-align: center;
+    font-size: 70%;
+    font-weight: bold;
+    display: none;
+    background-color: white;
+}
+.activecard {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 72px;
+    text-align: center;
+    font-size: 60%;
+    font-weight: bold;
+    background-color: white;
+    display: none;
+}
+
+.stockitem_selected {
+	border: 2px solid red ! important;
+	border-radius: 5px;
+}
