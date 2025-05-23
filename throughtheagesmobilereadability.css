@@ -834,3 +834,17 @@
 	border: 2px solid red ! important;
 	border-radius: 5px;
 }
+
+.help {
+  background: rgba(255, 255, 255, 0.6);
+  display: inline-block;
+  border-radius: 50%;
+  width: 16px;
+  text-align: center;
+  height: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  position: absolute;
+  top: 2%;
+  left: 3%;
+}

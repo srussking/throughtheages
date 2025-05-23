@@ -1225,10 +1225,26 @@ function (dojo, declare) {
 
         setupNewCard: function( card_div, card_type_id, card_id )
         {
-            var card = this.gamedatas.card_types[ card_type_id ];
+            // var card = this.gamedatas.card_types[ card_type_id ];
             var html = this.getCardTooltip( card_type_id );
-           
-            this.addTooltipHtml( card_div.id, html, 0 );
+            if(document.body.classList.contains('touch-device')){
+              this.addHelpListenerForMobile(card_div,html)
+            } else {
+              this.addTooltipHtml( card_div.id, html, 0 );
+            }
+        },
+
+        addHelpListenerForMobile: function(card_div,html){
+          card_div.innerHTML += "<div class='help' id='help_"+ card_div.id +"'><a class='icon' href='#' onclick=''>?</div></div>"
+          dojo.connect( $('help_'+card_div.id), 'onclick', this, (event) => { 
+            event.stopPropagation();
+            event.preventDefault();
+            this.showMobileTooltip(html)
+          } );
+        },
+
+        showMobileTooltip: function(html){
+          this.infoDialog(_(''), html, () => {})
         },
         
        setupMiniHand: function( card_div, card_type_id, card_id )
